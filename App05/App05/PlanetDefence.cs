@@ -69,8 +69,8 @@ namespace App05
 
             _spriteBatch.Begin();
 
+            //background
             Vector2 position = new Vector2(0, 0);
-
             _spriteBatch.Draw (background, position, Color.White);
 
             _spriteBatch.End();
