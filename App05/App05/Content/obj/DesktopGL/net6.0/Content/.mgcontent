@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/../../../../greenEnemy.png</File>
+    <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/../../../../redEnemy.png</File>
+    <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/background.png</File>
+    <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/Enemy/blueEnemy.png</File>
+    <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/Enemy/projectile.png</File>
+    <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/player.png</File>
+    <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/playerbullet.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File>Enemy/greenEnemy.png</File>
+    <File>Enemy/redEnemy.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
