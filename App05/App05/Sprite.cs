@@ -41,6 +41,35 @@ namespace App05
         }
 
         //variables
-        protected float deltaTime;
+        protected float deltaTime; //1/60th second
+
+        //constructor- starting postion and speed
+        public Sprite(int x, int y)
+        {
+            Position = new Vector2(x, y);
+            StartPosition = Position;
+
+            MaxSpeed = 1000;
+            MinSpeed = 200;
+            Speed = MinSpeed;
+
+            IsVisible = true;
+            IsALive = true; 
+        }
+
+        public Vector2 GetCentrePosition()
+        {
+            return new Vector2(Position.X - Image.Width / 2, Position.Y - Image.Height / 2);
+        }
+
+        public void ResetPosition()
+        {
+            Position = StartPosition;
+        }
+
+        public virtual void Update(GameTime gameTime)
+        {
+            deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        }
     }
 }

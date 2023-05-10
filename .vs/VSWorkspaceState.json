@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\App05"
+    "\\App05",
+    "\\App05\\App05"
   ],
-  "SelectedNode": "\\App05\\App05.sln",
+  "SelectedNode": "\\App05\\App05\\PlanetDefence.cs",
   "PreviewInSolutionExplorer": false
 }
