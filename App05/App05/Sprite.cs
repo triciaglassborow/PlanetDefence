@@ -49,8 +49,8 @@ namespace App05
             Position = new Vector2(x, y);
             StartPosition = Position;
 
-            MaxSpeed = 1000;
-            MinSpeed = 200;
+            MaxSpeed = 60;
+            MinSpeed = 10;
             Speed = MinSpeed;
 
             IsVisible = true;

@@ -19,6 +19,7 @@ namespace App05
         private Texture2D player;
         private Texture2D playerbullet;
 
+        private PlayerSprite playerCharacter;
         public PlanetDefence()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -49,17 +50,23 @@ namespace App05
 
             background = Content.Load<Texture2D>("background");
 
+            SetupSprites();
 
             // TODO: use this.Content to load your game content here
         }
 
+        //gives playersprite its image
+        private void SetupSprites()
+        {
+            playerCharacter = new PlayerSprite(200, 300);
+            playerCharacter.Image = player;
+        }
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-
+            playerCharacter.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -72,12 +79,8 @@ namespace App05
             //background
             Vector2 position = new Vector2(0, 0);
             _spriteBatch.Draw (background, position, Color.White);
-
+            _spriteBatch.Draw(playerCharacter.Image, playerCharacter.Position, Color.White);
             _spriteBatch.End();
-
-            base.Draw(gameTime);
-
-            // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }
