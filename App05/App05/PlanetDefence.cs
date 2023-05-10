@@ -20,6 +20,7 @@ namespace App05
         private Texture2D playerbullet;
 
         private PlayerSprite playerCharacter;
+        private BlueEnemy blueShip;
         public PlanetDefence()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -51,15 +52,17 @@ namespace App05
             background = Content.Load<Texture2D>("background");
 
             SetupSprites();
-
-            // TODO: use this.Content to load your game content here
         }
 
         //gives playersprite its image
         private void SetupSprites()
         {
-            playerCharacter = new PlayerSprite(200, 300);
+            playerCharacter = new PlayerSprite(100, 150);
             playerCharacter.Image = player;
+
+            blueShip = new BlueEnemy(100, 0);
+            blueShip.Image = blueEnemy;
+            blueShip.IsALive = true;
         }
         protected override void Update(GameTime gameTime)
         {
@@ -67,6 +70,7 @@ namespace App05
                 Exit();
 
             playerCharacter.Update(gameTime);
+            blueShip.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -78,8 +82,11 @@ namespace App05
 
             //background
             Vector2 position = new Vector2(0, 0);
-            _spriteBatch.Draw (background, position, Color.White);
+            _spriteBatch.Draw(background, position, Color.White);
+            //player
             _spriteBatch.Draw(playerCharacter.Image, playerCharacter.Position, Color.White);
+            //blue ship
+            _spriteBatch.Draw(blueShip.Image, blueShip.Position, Color.White);
             _spriteBatch.End();
 
             base.Draw(gameTime);

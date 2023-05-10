@@ -22,12 +22,12 @@ namespace App05
             float newX, newY;
             if (KeyState.IsKeyDown(Keys.Right))
             {
-                newX = Position.X + Speed + deltaTime;
+                newX = Position.X + PlayerSpeed + deltaTime;
                 Position = new Vector2(newX, Position.Y);
             }
             if (KeyState.IsKeyDown(Keys.Left))
             {
-                newX = Position.X - Speed + deltaTime;
+                newX = Position.X - PlayerSpeed + deltaTime;
                 Position = new Vector2(newX, Position.Y);
             }
 

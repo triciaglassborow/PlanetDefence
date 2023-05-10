@@ -16,9 +16,8 @@ namespace App05
         public Vector2 Position { get; set; }
 
         //properties
-        public int MaxSpeed { get; set; }
-        public int MinSpeed { get; set; }
-        public int Speed { get; set; }
+        public int EnemySpeed { get; set; }
+        public int PlayerSpeed { get; set; }
         public Texture2D Image { get; set; }
         public bool IsVisible { get; set; }
         public bool IsALive { get; set; }
@@ -30,6 +29,9 @@ namespace App05
         {
             get { return Image.Height; }
         }
+
+        
+
         //Hitbox? (bounding box)
         public Rectangle HitBox
         {
@@ -42,16 +44,17 @@ namespace App05
 
         //variables
         protected float deltaTime; //1/60th second
+        
 
         //constructor- starting postion and speed
         public Sprite(int x, int y)
         {
+            
             Position = new Vector2(x, y);
             StartPosition = Position;
 
-            MaxSpeed = 60;
-            MinSpeed = 10;
-            Speed = MinSpeed;
+            EnemySpeed = 1;
+            PlayerSpeed = 10;
 
             IsVisible = true;
             IsALive = true; 
