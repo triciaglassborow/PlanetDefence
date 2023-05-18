@@ -98,7 +98,7 @@ namespace App05
                 Image = rightWall
             };
 
-            leftBorder = new LeftWall(400, -100)
+            leftBorder = new LeftWall(551, -100)
             {
                 Image = leftWall
             };
@@ -114,6 +114,8 @@ namespace App05
             greenShip.Update(gameTime);
             rightBorder.Update(gameTime);
             base.Update(gameTime);
+
+            //collisions
 
             //player collising wth enemy ship ends the game, brings up death screen
             if (playerCharacter.HasCollided(blueShip))
@@ -134,29 +136,36 @@ namespace App05
 
             if (rightBorder.HasCollided(blueShip))
             {
-                Exit();
+                blueShip.MoveRight = true;
+                blueShip.MoveLeft = false; 
             }
             if (rightBorder.HasCollided(redShip))
             {
-                Exit();
+                redShip.MoveRight = true;
+                redShip.MoveLeft = false;
             }
             if (rightBorder.HasCollided(greenShip))
             {
-                Exit();
+                greenShip.MoveRight = true;
+                greenShip.MoveLeft = false;
             }
 
             //enemys hitting left border
             if (leftBorder.HasCollided(blueShip))
             {
-                Exit();
+
+                blueShip.MoveRight = false;
+                blueShip.MoveLeft = true;
             }
             if (leftBorder.HasCollided(redShip))
             {
-                Exit();
+                redShip.MoveRight = false;
+                redShip.MoveLeft = true;
             }
             if (leftBorder.HasCollided(greenShip))
             {
-                Exit();
+                greenShip.MoveRight = false;
+                greenShip.MoveLeft = true;
             }
 
 
@@ -165,9 +174,6 @@ namespace App05
             //enemy ship colliding with left, down movemtn the travel right
 
         }
-
-        //bounding boxes
-        
 
         protected override void Draw(GameTime gameTime)
         {

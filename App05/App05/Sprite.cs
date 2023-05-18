@@ -23,6 +23,8 @@ namespace App05
         public Texture2D Image { get; set; }
         public bool IsVisible { get; set; }
         public bool IsAlive { get; set; }
+        public bool MoveRight { get; set; }
+        public bool MoveLeft { get; set; }
         public float Scale { get; set; }
         public Vector2 Origin { get; set; }
         
@@ -63,11 +65,14 @@ namespace App05
             Position = new Vector2(x, y);
             StartPosition = Position;
 
-            EnemySpeed = 1;
+            EnemySpeed = 3;
             PlayerSpeed = 5;
             
             IsAlive = true;
             IsVisible = true;
+
+            MoveRight = true;
+            MoveLeft = false;
          
         }
 
