@@ -83,7 +83,6 @@ namespace App05
 
             if (playerCharacter.HasCollided(blueShip))
             {
-                
                 Exit(); 
             }
         }

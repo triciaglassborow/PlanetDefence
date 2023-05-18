@@ -12,22 +12,9 @@ namespace App05
 {
     public class Enemy : Sprite
     {
-        private readonly List<Sprite> Ships;
-
-        public Enemy(int x, int y) : base(x, y) { }
-
-        public void DetectCollision(Sprite sprite)
+        public Enemy(int x, int y) : base(x, y)
         {
-            foreach(Sprite ship in Ships)
-            {
-                if (sprite.HasCollided(ship) && sprite.IsAlive)
-                {
-                    sprite.IsAlive = false;
-                    sprite.IsVisible = false;
-                }
-            }
         }
-
 
         public override void Update(GameTime gameTime)
         {
@@ -55,18 +42,6 @@ namespace App05
                 Position = new Vector2(newX, Position.Y);
             }
 
-            /*newX = Position.X + EnemySpeed + deltaTime;
-                Position = new Vector2(newX, Position.Y);
-                //pause
-                newY = Position.Y + EnemySpeed + deltaTime;
-                Position = new Vector2(Position.X, newY);
-                //pause
-                newX = Position.X - EnemySpeed + deltaTime;
-                Position = new Vector2(newX, Position.Y);
-                //pause
-                newY = Position.Y + EnemySpeed + deltaTime;
-                Position = new Vector2(Position.X, newY);
-            */
         }
             
     }
