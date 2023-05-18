@@ -21,6 +21,10 @@ namespace App05
 
         private PlayerSprite playerCharacter;
         private BlueEnemy blueShip;
+
+        public float Scale { get; set; }
+
+        
         public PlanetDefence()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -57,12 +61,16 @@ namespace App05
         //gives playersprite its image
         private void SetupSprites()
         {
-            playerCharacter = new PlayerSprite(100, 150);
-            playerCharacter.Image = player;
+            playerCharacter = new PlayerSprite(225, 450)
+            {
+                Image = player
+            };
 
-            blueShip = new BlueEnemy(100, 0);
-            blueShip.Image = blueEnemy;
-            blueShip.IsALive = true;
+            blueShip = new BlueEnemy(1, -100)
+            {
+                Image = blueEnemy
+            };
+
         }
         protected override void Update(GameTime gameTime)
         {
@@ -72,8 +80,18 @@ namespace App05
             playerCharacter.Update(gameTime);
             blueShip.Update(gameTime);
             base.Update(gameTime);
+
+            if (playerCharacter.HasCollided(blueShip))
+            {
+                
+                Exit(); 
+            }
         }
 
+        //bounding boxes
+        public Rectangle Border = new((int)0, (int)-101, (int)552, (int)764);
+        
+        
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
@@ -86,7 +104,7 @@ namespace App05
             //player
             _spriteBatch.Draw(playerCharacter.Image, playerCharacter.Position, Color.White);
             //blue ship
-            _spriteBatch.Draw(blueShip.Image, blueShip.Position, Color.White);
+            _spriteBatch.Draw(blueShip.Image, blueShip.Position,Color.White);
             _spriteBatch.End();
 
             base.Draw(gameTime);

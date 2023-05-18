@@ -6,40 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Drawing;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace App05
 {
-    internal class BlueEnemy : Sprite
+    public class BlueEnemy : Enemy
     {
-        public BlueEnemy(int x, int y) : base(x, y) { }
-
-        private static readonly TimeSpan pause = TimeSpan.FromMilliseconds(3000);
-        private TimeSpan lastTimeAttack;
-
-        public override void Update(GameTime gameTime)
+        public BlueEnemy(int x, int y) : base(x, y)
         {
+        }        
             
-            base.Update(gameTime);
-
-            float newX, newY;
-            while(IsALive == true)
-            {
-                newX = Position.X + EnemySpeed + deltaTime;
-                Position = new Vector2(newX, Position.Y);
-                //pause
-                newY = Position.Y + EnemySpeed + deltaTime;
-                Position = new Vector2(Position.X, newY);
-                //pause
-                newX = Position.X - EnemySpeed + deltaTime;
-                Position = new Vector2(newX, Position.Y);
-                //pause
-                newY = Position.Y + EnemySpeed + deltaTime;
-                Position = new Vector2(Position.X, newY);
-            }
-
-        }
-            
-    }
-
-    
+    }    
 }

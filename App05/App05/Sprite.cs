@@ -2,13 +2,15 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace App05
 {
-    internal class Sprite
+    public class Sprite
     {
         //structures
         public Rectangle Boundary { get; set; }
@@ -20,7 +22,11 @@ namespace App05
         public int PlayerSpeed { get; set; }
         public Texture2D Image { get; set; }
         public bool IsVisible { get; set; }
-        public bool IsALive { get; set; }
+        public bool IsAlive { get; set; }
+        public float Scale { get; set; }
+        public Vector2 Origin { get; set; }
+        
+
         public int Width
         {
             get { return Image.Width; }
@@ -30,18 +36,22 @@ namespace App05
             get { return Image.Height; }
         }
 
-        
 
         //Hitbox? (bounding box)
-        public Rectangle HitBox
+        public Rectangle BoundingBox
         {
             get
             {
-                return new Rectangle(
-                    (int)Position.X, (int)Position.Y, Width, Height);
+                return new Rectangle
+                (
+                    (int)Position.X,
+                    (int)Position.Y,
+                    (int)(Width), (int)(Height)
+                );
             }
         }
 
+       
         //variables
         protected float deltaTime; //1/60th second
         
@@ -54,10 +64,12 @@ namespace App05
             StartPosition = Position;
 
             EnemySpeed = 1;
-            PlayerSpeed = 10;
-
+            PlayerSpeed = 5;
+            
+            IsAlive = true;
             IsVisible = true;
-            IsALive = true; 
+            
+
         }
 
         public Vector2 GetCentrePosition()
@@ -70,9 +82,27 @@ namespace App05
             Position = StartPosition;
         }
 
+        public bool HasCollided(Sprite otherSprite)
+        {
+            if (BoundingBox.IntersectsWith(otherSprite.BoundingBox))
+            {
+                int margin = 8;
+                Rectangle overlap = Rectangle.Intersect(BoundingBox, otherSprite.BoundingBox);
+                if (overlap.Width > margin)
+                    return true;
+            }
+
+            return false;
+        }
+
         public virtual void Update(GameTime gameTime)
         {
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            
         }
-    }
+
+        
+        
+}
 }
