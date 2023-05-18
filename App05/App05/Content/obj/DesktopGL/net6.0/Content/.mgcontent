@@ -9,10 +9,14 @@
     <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/Enemy/greenEnemy.png</File>
     <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/Enemy/projectile.png</File>
     <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/Enemy/redEnemy.png</File>
+    <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/lBoundry.png</File>
     <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/player.png</File>
     <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/playerbullet.png</File>
+    <File>C:/Users/44791/Documents/Semester 2/Application programming/game/App05/App05/Content/rboundry.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

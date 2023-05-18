@@ -68,8 +68,7 @@ namespace App05
             
             IsAlive = true;
             IsVisible = true;
-            
-
+         
         }
 
         public Vector2 GetCentrePosition()
@@ -86,7 +85,7 @@ namespace App05
         {
             if (BoundingBox.IntersectsWith(otherSprite.BoundingBox))
             {
-                int margin = 8;
+                int margin = 1;
                 Rectangle overlap = Rectangle.Intersect(BoundingBox, otherSprite.BoundingBox);
                 if (overlap.Width > margin)
                     return true;
@@ -104,5 +103,5 @@ namespace App05
 
         
         
-}
+    }
 }

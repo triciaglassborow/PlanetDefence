@@ -18,13 +18,19 @@ namespace App05
 
         public override void Update(GameTime gameTime)
         {
-            
-            base.Update(gameTime);
-            
             float newX, newY;
             if(IsAlive == true)
             {
-                newX = Position.X + EnemySpeed + deltaTime;
+                //movemtn
+            } 
+            if(IsAlive == false)
+            {
+                //dies, score goes up
+            }
+            base.Update(gameTime);
+
+        }
+        /*newX = Position.X + EnemySpeed + deltaTime;
                 Position = new Vector2(newX, Position.Y);
                 //pause
                 newY = Position.Y + EnemySpeed + deltaTime;
@@ -34,15 +40,7 @@ namespace App05
                 Position = new Vector2(newX, Position.Y);
                 //pause
                 newY = Position.Y + EnemySpeed + deltaTime;
-                Position = new Vector2(Position.X, newY);
-            } 
-            if(IsAlive == false)
-            {
-                newX = Position.X + EnemySpeed + deltaTime;
-                Position = new Vector2(newX, Position.Y);
-            }
-
-        }
+                Position = new Vector2(Position.X, newY); */
             
     }
 

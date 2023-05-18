@@ -73,6 +73,18 @@
 /processorParam:TextureFormat=Color
 /build:Enemy/redEnemy.png
 
+#begin lBoundry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:lBoundry.png
+
 #begin player.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -96,4 +108,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:playerbullet.png
+
+#begin rboundry.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:rboundry.png
 
