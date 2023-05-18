@@ -27,6 +27,20 @@ namespace App05
             {
                 //dies, score goes up
             }
+            if (MoveRight == true && MoveLeft == false)
+            {
+                newY = Position.Y + 0.5f + deltaTime;
+                Position = new Vector2(Position.X, newY);
+                newX = Position.X + EnemySpeed + deltaTime;
+                Position = new Vector2(newX, Position.Y);
+            }
+            if (MoveLeft == true && MoveRight == false)
+            {
+                newY = Position.Y + 0.5f + deltaTime;
+                Position = new Vector2(Position.X, newY);
+                newX = Position.X - EnemySpeed + deltaTime;
+                Position = new Vector2(newX, Position.Y);
+            }
             base.Update(gameTime);
 
         }
