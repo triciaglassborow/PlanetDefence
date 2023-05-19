@@ -20,7 +20,7 @@ namespace App05
         private Texture2D leftWall;
 
         private Texture2D player;
-        private Texture2D playerbullet;
+        private Texture2D playerProjectile;
 
         private PlayerSprite playerCharacter;
         private BlueEnemy blueShip;
@@ -28,6 +28,7 @@ namespace App05
         private GreenEnemy greenShip;
         private Walls rightBorder;
         private Walls leftBorder;
+        private Projectile playerBullet;
         
 
         //public Rectangle RBorder = new((int)0, (int)-100, (int)1, (int)864);
@@ -55,7 +56,7 @@ namespace App05
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             player = Content.Load<Texture2D>("player");
-            playerbullet = Content.Load<Texture2D>("playerbullet");
+            playerProjectile = Content.Load<Texture2D>("playerbullet");
 
             redEnemy = Content.Load<Texture2D>("Enemy/redEnemy");
             blueEnemy = Content.Load<Texture2D>("Enemy/blueEnemy");
@@ -73,7 +74,7 @@ namespace App05
         //gives playersprite its image
         private void SetupSprites()
         {
-            playerCharacter = new PlayerSprite(225, 450)
+            playerCharacter = new PlayerSprite(276, 550)
             {
                 Image = player
             };
@@ -102,6 +103,11 @@ namespace App05
             {
                 Image = leftWall
             };
+
+            playerBullet = new Projectile(276, 550)
+            {
+                Image = playerProjectile
+            };
         }
         protected override void Update(GameTime gameTime)
         {
@@ -113,6 +119,8 @@ namespace App05
             redShip.Update(gameTime);
             greenShip.Update(gameTime);
             rightBorder.Update(gameTime);
+            leftBorder.Update(gameTime);
+            playerBullet.Update(gameTime);
             base.Update(gameTime);
 
             //collisions
@@ -153,7 +161,6 @@ namespace App05
             //enemys hitting left border
             if (leftBorder.HasCollided(blueShip))
             {
-
                 blueShip.MoveRight = false;
                 blueShip.MoveLeft = true;
             }
@@ -168,11 +175,34 @@ namespace App05
                 greenShip.MoveLeft = true;
             }
 
+            //playerBullet hitting enemy
+            if (playerBullet.HasCollided(blueShip))
+            {
+                blueShip.MoveRight = true;
+                blueShip.MoveLeft = true;
+            }
+            if (playerBullet.HasCollided(redShip))
+            {
+                redShip.MoveRight = true;
+                redShip.MoveLeft = true;
+            }
+            if (playerBullet.HasCollided(greenShip))
+            {
+                greenShip.MoveRight = true;
+                greenShip.MoveLeft = true;
+            }
 
-            //enemy collng with right, down movemtn and then trave left
-
-            //enemy ship colliding with left, down movemtn the travel right
-
+            //linking playerCharacter and playerBullet postions same
+            if (!playerBullet.isFired)
+            {
+                playerBullet.Position = playerCharacter.Position;
+            }
+            if (playerBullet.Position.Y < 0)
+            {
+                playerBullet.isFired = false;
+            }
+            
+            
         }
 
         protected override void Draw(GameTime gameTime)
@@ -184,12 +214,15 @@ namespace App05
             //background
             Vector2 position = new Vector2(0, 0);
             _spriteBatch.Draw(background, position, Color.White);
+             //bulets
+            _spriteBatch.Draw(playerBullet.Image, playerBullet.GetCentrePosition(), Color.White);
             //player
-            _spriteBatch.Draw(playerCharacter.Image, playerCharacter.Position, Color.White);
+            _spriteBatch.Draw(playerCharacter.Image, playerCharacter.GetCentrePosition(), Color.White);
             //enemy ships
             _spriteBatch.Draw(blueShip.Image, blueShip.Position,Color.White);
             _spriteBatch.Draw(redShip.Image, redShip.Position, Color.White);
             _spriteBatch.Draw(greenShip.Image, greenShip.Position, Color.White);
+            
 
             _spriteBatch.Draw(rightBorder.Image, rightBorder.Position, Color.White);    
             _spriteBatch.Draw(leftBorder.Image, leftBorder.Position, Color.White);

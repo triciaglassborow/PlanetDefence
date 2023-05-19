@@ -61,7 +61,6 @@ namespace App05
         //constructor- starting postion and speed
         public Sprite(int x, int y)
         {
-            
             Position = new Vector2(x, y);
             StartPosition = Position;
 
@@ -102,8 +101,6 @@ namespace App05
         public virtual void Update(GameTime gameTime)
         {
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            
         }
 
         
