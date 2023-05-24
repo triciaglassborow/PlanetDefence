@@ -13,9 +13,11 @@ namespace App05
 {
     public class RedEnemy : Enemy
     {
+        public int lives = 0;
+
         public RedEnemy(int x, int y) : base(x, y)
         {
         }        
-            
+         
     }    
 }

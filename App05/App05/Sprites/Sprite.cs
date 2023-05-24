@@ -101,9 +101,12 @@ namespace App05
         public virtual void Update(GameTime gameTime)
         {
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            
-
+            if (!IsAlive)
+            {
+                Position = new Vector2(-100, -100);
+                MoveLeft = false;
+                MoveRight = false;
+            }
         }
 
         

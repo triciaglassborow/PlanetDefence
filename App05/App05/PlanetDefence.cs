@@ -29,7 +29,8 @@ namespace App05
         private Walls rightBorder;
         private Walls leftBorder;
         private Projectile playerBullet;
-        
+
+        public int points = 0;
 
         //public Rectangle RBorder = new((int)0, (int)-100, (int)1, (int)864);
         //public Rectangle LBorder = new((int)552, (int)-100, (int)1, (int)864);
@@ -145,7 +146,7 @@ namespace App05
             if (rightBorder.HasCollided(blueShip))
             {
                 blueShip.MoveRight = true;
-                blueShip.MoveLeft = false; 
+                blueShip.MoveLeft = false;
             }
             if (rightBorder.HasCollided(redShip))
             {
@@ -178,18 +179,33 @@ namespace App05
             //playerBullet hitting enemy and then playerbullet resets
             if (playerBullet.HasCollided(blueShip))
             {
-                blueShip.IsAlive = false;
                 playerBullet.isFired = false;
+                blueShip.IsAlive = false;
+                points++;
+
             }
             if (playerBullet.HasCollided(redShip))
             {
-                redShip.IsAlive = false;
                 playerBullet.isFired = false;
+                points++;
+                redShip.lives++;
+                if (redShip.lives == 2)
+                {
+                    redShip.IsAlive = false;
+                }
+                
+                
             }
             if (playerBullet.HasCollided(greenShip))
             {
-                greenShip.IsAlive=false;
                 playerBullet.isFired = false;
+                points++;
+                greenShip.lives++;
+                if (greenShip.lives == 3)
+                {
+                    greenShip.IsAlive = false;
+                }
+               
             }
 
             //linking playerCharacter and playerBullet postions same
@@ -219,20 +235,11 @@ namespace App05
             //player
             _spriteBatch.Draw(playerCharacter.Image, playerCharacter.GetCentrePosition(), Color.White);
             //enemy ships
-            if (blueShip.IsAlive)
-            {
-                 _spriteBatch.Draw(blueShip.Image, blueShip.Position,Color.White);
-            }
-            if (redShip.IsAlive)
-            {
-                _spriteBatch.Draw(redShip.Image, redShip.Position, Color.White);
-            }
-            if (greenShip.IsAlive)
-            {
-                _spriteBatch.Draw(greenShip.Image, greenShip.Position, Color.White);
-            }
-            
-            
+            _spriteBatch.Draw(blueShip.Image, blueShip.Position, Color.White);
+            _spriteBatch.Draw(redShip.Image, redShip.Position, Color.White);
+            _spriteBatch.Draw(greenShip.Image, greenShip.Position, Color.White);
+
+
 
             _spriteBatch.Draw(rightBorder.Image, rightBorder.Position, Color.White);    
             _spriteBatch.Draw(leftBorder.Image, leftBorder.Position, Color.White);
