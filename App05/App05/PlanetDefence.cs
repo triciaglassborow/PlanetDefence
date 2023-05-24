@@ -175,21 +175,21 @@ namespace App05
                 greenShip.MoveLeft = true;
             }
 
-            //playerBullet hitting enemy
+            //playerBullet hitting enemy and then playerbullet resets
             if (playerBullet.HasCollided(blueShip))
             {
-                blueShip.MoveRight = true;
-                blueShip.MoveLeft = true;
+                blueShip.IsAlive = false;
+                playerBullet.isFired = false;
             }
             if (playerBullet.HasCollided(redShip))
             {
-                redShip.MoveRight = true;
-                redShip.MoveLeft = true;
+                redShip.IsAlive = false;
+                playerBullet.isFired = false;
             }
             if (playerBullet.HasCollided(greenShip))
             {
-                greenShip.MoveRight = true;
-                greenShip.MoveLeft = true;
+                greenShip.IsAlive=false;
+                playerBullet.isFired = false;
             }
 
             //linking playerCharacter and playerBullet postions same
@@ -219,9 +219,19 @@ namespace App05
             //player
             _spriteBatch.Draw(playerCharacter.Image, playerCharacter.GetCentrePosition(), Color.White);
             //enemy ships
-            _spriteBatch.Draw(blueShip.Image, blueShip.Position,Color.White);
-            _spriteBatch.Draw(redShip.Image, redShip.Position, Color.White);
-            _spriteBatch.Draw(greenShip.Image, greenShip.Position, Color.White);
+            if (blueShip.IsAlive)
+            {
+                 _spriteBatch.Draw(blueShip.Image, blueShip.Position,Color.White);
+            }
+            if (redShip.IsAlive)
+            {
+                _spriteBatch.Draw(redShip.Image, redShip.Position, Color.White);
+            }
+            if (greenShip.IsAlive)
+            {
+                _spriteBatch.Draw(greenShip.Image, greenShip.Position, Color.White);
+            }
+            
             
 
             _spriteBatch.Draw(rightBorder.Image, rightBorder.Position, Color.White);    

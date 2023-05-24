@@ -101,6 +101,9 @@ namespace App05
         public virtual void Update(GameTime gameTime)
         {
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            
+
         }
 
         
