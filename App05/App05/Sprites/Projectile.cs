@@ -32,7 +32,7 @@ namespace App05
 
             if(isFired)
             {
-                newY = Position.Y - PlayerSpeed + deltaTime;
+                newY = Position.Y - BulletSpeed + deltaTime;
                 Position = new Vector2(Position.X, newY);
             }
 

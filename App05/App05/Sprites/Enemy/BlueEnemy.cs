@@ -15,6 +15,7 @@ namespace App05
     {
         public BlueEnemy(int x, int y) : base(x, y)
         {
+
         }        
             
     }    

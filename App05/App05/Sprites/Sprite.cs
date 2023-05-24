@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -20,6 +21,7 @@ namespace App05
         //properties
         public int EnemySpeed { get; set; }
         public int PlayerSpeed { get; set; }
+        public int BulletSpeed { get; set; }
         public Texture2D Image { get; set; }
         public bool IsVisible { get; set; }
         public bool IsAlive { get; set; }
@@ -27,7 +29,8 @@ namespace App05
         public bool MoveLeft { get; set; }
         public float Scale { get; set; }
         public Vector2 Origin { get; set; }
-        
+        public int Wave { get; set; }
+        public bool RunWave1 { get; set; }
 
         public int Width
         {
@@ -64,14 +67,17 @@ namespace App05
             Position = new Vector2(x, y);
             StartPosition = Position;
 
-            EnemySpeed = 3;
+            EnemySpeed = 0;
             PlayerSpeed = 5;
+            BulletSpeed = 8;
             
             IsAlive = true;
             IsVisible = true;
 
             MoveRight = true;
             MoveLeft = false;
+
+
          
         }
 
@@ -107,9 +113,8 @@ namespace App05
                 MoveLeft = false;
                 MoveRight = false;
             }
+            
         }
 
-        
-        
     }
 }

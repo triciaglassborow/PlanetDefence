@@ -22,41 +22,23 @@ namespace App05
             
             if (MoveRight == true && MoveLeft == false)
             {
-                newY = Position.Y + 0.5f + deltaTime;
+                newY = Position.Y + (EnemySpeed /6.0f) + deltaTime;
                 Position = new Vector2(Position.X, newY);
                 newX = Position.X + EnemySpeed + deltaTime;
                 Position = new Vector2(newX, Position.Y);
             }
             if (MoveLeft == true && MoveRight == false)
             {
-                newY = Position.Y + 0.5f + deltaTime;
+                newY = Position.Y + (EnemySpeed / 6.0f) + deltaTime;
                 Position = new Vector2(Position.X, newY);
                 newX = Position.X - EnemySpeed + deltaTime;
                 Position = new Vector2(newX, Position.Y);
             }
             
-            if(IsAlive == true)
-            {
-                //movemtn
-            } 
-            if(IsAlive == false)
-            {
-                //dies, score goes up
-            }
             base.Update(gameTime);
 
         }
-        /*newX = Position.X + EnemySpeed + deltaTime;
-                Position = new Vector2(newX, Position.Y);
-                //pause
-                newY = Position.Y + EnemySpeed + deltaTime;
-                Position = new Vector2(Position.X, newY);
-                //pause
-                newX = Position.X - EnemySpeed + deltaTime;
-                Position = new Vector2(newX, Position.Y);
-                //pause
-                newY = Position.Y + EnemySpeed + deltaTime;
-                Position = new Vector2(Position.X, newY); */
+        
             
     }
 

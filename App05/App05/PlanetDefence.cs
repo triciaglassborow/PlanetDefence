@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Xml.Schema;
 using static System.Formats.Asn1.AsnWriter;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -26,18 +28,24 @@ namespace App05
 
         private PlayerSprite playerCharacter;
         private BlueEnemy blueShip;
+        private BlueEnemy blueShip2;
         private RedEnemy redShip;
+
+        private RedEnemy redShip2;
+        private RedEnemy redShip3;
         private GreenEnemy greenShip;
+
         private Walls rightBorder;
         private Walls leftBorder;
         private Projectile playerBullet;
 
         public int points = 0;
+        public int spaceCount = 0;
 
-        //public Rectangle RBorder = new((int)0, (int)-100, (int)1, (int)864);
-        //public Rectangle LBorder = new((int)552, (int)-100, (int)1, (int)864);
+        public bool RunWave1 = false;
+        public bool Wave1Started = false;
+        public bool Wave2Started = false;
 
-        
         public PlanetDefence()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -82,20 +90,38 @@ namespace App05
             {
                 Image = player
             };
-
-            blueShip = new BlueEnemy(1,0)
+            //wave1
+            blueShip = new BlueEnemy(-100,100)
             {
-                Image = blueEnemy
+                Image = blueEnemy,
+                Wave = 1
+            };
+            redShip = new RedEnemy(-100, 100)
+            {
+                Image = redEnemy,
+                Wave = 1
+            };
+            blueShip2 = new BlueEnemy(-100, 100)
+            {
+                Image = blueEnemy,
+                Wave = 1
             };
 
-            redShip = new RedEnemy(100,0)
+            //wave2
+            redShip2 = new RedEnemy(-100, 100)
             {
-                Image = redEnemy
+                Image = redEnemy,
+                Wave = 2
             };
-
-            greenShip = new GreenEnemy(200,0)
+            greenShip = new GreenEnemy(-100, 100)
             {
-                Image = greenEnemy
+                Image = greenEnemy,
+                Wave = 2
+            };
+            redShip3 = new RedEnemy(-100, 100)
+            {
+                Image = redEnemy,
+                Wave = 2
             };
 
             rightBorder = new RightWall(-179, -100)
@@ -115,16 +141,73 @@ namespace App05
         }
         protected override void Update(GameTime gameTime)
         {
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            KeyboardState KeyState = Keyboard.GetState();
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                RunWave1 = true;
 
             playerCharacter.Update(gameTime);
+
+            blueShip.Update(gameTime);
+            blueShip2.Update(gameTime);
+            redShip.Update(gameTime);
+
+            redShip2.Update(gameTime);
+            redShip3.Update(gameTime);
+            greenShip.Update(gameTime);
+
+            rightBorder.Update(gameTime);
+            leftBorder.Update(gameTime);
             playerBullet.Update(gameTime);
             base.Update(gameTime);
+            //start wave 1
+            if (RunWave1)
+            {
+                if (blueShip.Wave == 1 && !Wave1Started)
+                {
+                    blueShip.Position = new Vector2(50, 0);
+                    blueShip.EnemySpeed = 3;
+                    
+                }
+                if (blueShip2.Wave == 1 && !Wave1Started)
+                {
+                    blueShip2.Position = new Vector2(404, 0);
+                    blueShip2.EnemySpeed = 3;
+                }
+                if (redShip.Wave == 1 && !Wave1Started)
+                {
+                    redShip.Position = new Vector2(227, 0);
+                    redShip.EnemySpeed = 3;
+                }
+                Wave1Started = true;
+            }
+            //start wave 2
+            if(!blueShip.IsAlive && !redShip.IsAlive && !blueShip2.IsAlive)
+            {
+                if (redShip2.Wave == 2 && !Wave2Started)
+                {
+                    redShip2.Position = new Vector2(50, 0);
+                    redShip2.EnemySpeed = 3;
 
+                }
+                if (redShip3.Wave == 2 && !Wave2Started)
+                {
+                    redShip3.Position = new Vector2(404, 0);
+                    redShip3.EnemySpeed = 3;
+                }
+                if (greenShip.Wave == 2 && !Wave2Started)
+                {
+                    greenShip.Position = new Vector2(227, 0);
+                    greenShip.EnemySpeed = 3;
+                }
+                Wave2Started = true;
+            }
             //collisions
 
             //player collising wth enemy ship ends the game, brings up death screen
+            //wave1
             if (playerCharacter.HasCollided(blueShip))
             {
                 //death screen
@@ -134,13 +217,27 @@ namespace App05
                 //redShip.IsAlive = false;
                 //death screen
             }
+            if (playerCharacter.HasCollided(blueShip2))
+            {
+                //death screen
+            }
+
+            //wave2
+            if (playerCharacter.HasCollided(redShip2))
+            {
+                //death screen
+            }
+            if (playerCharacter.HasCollided(redShip3))
+            {
+                //death screen
+            }
             if (playerCharacter.HasCollided(greenShip))
             {
                 //death screen
             }
 
             //enemys hitting right border
-
+            //wave1
             if (rightBorder.HasCollided(blueShip))
             {
                 blueShip.MoveRight = true;
@@ -150,6 +247,23 @@ namespace App05
             {
                 redShip.MoveRight = true;
                 redShip.MoveLeft = false;
+            }
+            if (rightBorder.HasCollided(blueShip2))
+            {
+                blueShip2.MoveRight = true;
+                blueShip2.MoveLeft = false;
+            }
+
+            //wave2
+            if (rightBorder.HasCollided(redShip2))
+            {
+                redShip2.MoveRight = true;
+                redShip2.MoveLeft = false;
+            }
+            if (rightBorder.HasCollided(redShip3))
+            {
+                redShip3.MoveRight = true;
+                redShip3.MoveLeft = false;
             }
             if (rightBorder.HasCollided(greenShip))
             {
@@ -168,6 +282,23 @@ namespace App05
                 redShip.MoveRight = false;
                 redShip.MoveLeft = true;
             }
+            if (leftBorder.HasCollided(blueShip2))
+            {
+                blueShip2.MoveRight = false;
+                blueShip2.MoveLeft = true;
+            }
+
+            //wave2
+            if (leftBorder.HasCollided(redShip2))
+            {
+                redShip2.MoveRight = false;
+                redShip2.MoveLeft = true;
+            }
+            if (leftBorder.HasCollided(redShip3))
+            {
+                redShip3.MoveRight = false;
+                redShip3.MoveLeft = true;
+            }
             if (leftBorder.HasCollided(greenShip))
             {
                 greenShip.MoveRight = false;
@@ -185,23 +316,50 @@ namespace App05
             if (playerBullet.HasCollided(redShip))
             {
                 playerBullet.isFired = false;
-                points++;
                 redShip.lives++;
                 if (redShip.lives == 2)
                 {
                     redShip.IsAlive = false;
+                    points += 2;
+                } 
+            }
+            if (playerBullet.HasCollided(blueShip2))
+            {
+                playerBullet.isFired = false;
+                blueShip2.IsAlive = false;
+                points++;
+
+            }
+
+            //wave2
+            if (playerBullet.HasCollided(redShip2))
+            {
+                playerBullet.isFired = false;
+                redShip2.lives++;
+                if (redShip2.lives == 2)
+                {
+                    redShip2.IsAlive = false;
+                    points += 2;
                 }
-                
-                
+            }
+            if (playerBullet.HasCollided(redShip3))
+            {
+                playerBullet.isFired = false;
+                redShip3.lives++;
+                if (redShip3.lives == 2)
+                {
+                    redShip3.IsAlive = false;
+                    points += 2;
+                }
             }
             if (playerBullet.HasCollided(greenShip))
             {
                 playerBullet.isFired = false;
-                points++;
                 greenShip.lives++;
                 if (greenShip.lives == 3)
                 {
                     greenShip.IsAlive = false;
+                    points += 3;
                 }
                
             }
@@ -235,10 +393,14 @@ namespace App05
             //player
             _spriteBatch.Draw(playerCharacter.Image, playerCharacter.GetCentrePosition(), Color.White);
             //enemy ships
+            //wave1
             _spriteBatch.Draw(blueShip.Image, blueShip.Position, Color.White);
             _spriteBatch.Draw(redShip.Image, redShip.Position, Color.White);
+            _spriteBatch.Draw(blueShip2.Image, blueShip2.Position, Color.White);
+            //wave2
+            _spriteBatch.Draw(redShip2.Image, redShip2.Position, Color.White);
             _spriteBatch.Draw(greenShip.Image, greenShip.Position, Color.White);
-
+            _spriteBatch.Draw(redShip3.Image, redShip3.Position, Color.White);
 
 
             _spriteBatch.Draw(rightBorder.Image, rightBorder.Position, Color.White);    
