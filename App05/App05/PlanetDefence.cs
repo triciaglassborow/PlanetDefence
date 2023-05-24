@@ -119,11 +119,6 @@ namespace App05
                 Exit();
 
             playerCharacter.Update(gameTime);
-            blueShip.Update(gameTime);
-            redShip.Update(gameTime);
-            greenShip.Update(gameTime);
-            rightBorder.Update(gameTime);
-            leftBorder.Update(gameTime);
             playerBullet.Update(gameTime);
             base.Update(gameTime);
 
