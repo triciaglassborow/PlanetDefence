@@ -109,18 +109,6 @@
 /processorParam:TextureFormat=Color
 /build:playerbullet.png
 
-#begin playerbullet.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:playerbullet.png
-
 #begin rboundry.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -132,4 +120,11 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:rboundry.png
+
+#begin Score.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Score.spritefont
 

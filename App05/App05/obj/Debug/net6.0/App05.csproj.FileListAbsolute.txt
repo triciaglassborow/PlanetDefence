@@ -32,3 +32,4 @@ C:\Users\44791\Documents\Semester 2\Application programming\game\App05\App05\bin
 C:\Users\44791\Documents\Semester 2\Application programming\game\App05\App05\bin\Debug\net6.0\Content\playerbullet.xnb
 C:\Users\44791\Documents\Semester 2\Application programming\game\App05\App05\bin\Debug\net6.0\Content\lBoundry.xnb
 C:\Users\44791\Documents\Semester 2\Application programming\game\App05\App05\bin\Debug\net6.0\Content\rboundry.xnb
+C:\Users\44791\Documents\Semester 2\Application programming\game\App05\App05\bin\Debug\net6.0\Content\Score.xnb

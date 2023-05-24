@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using static System.Formats.Asn1.AsnWriter;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace App05
@@ -9,6 +10,7 @@ namespace App05
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private SpriteFont font;
 
         private Texture2D background;
 
@@ -69,6 +71,7 @@ namespace App05
 
             background = Content.Load<Texture2D>("background");
 
+            font = Content.Load<SpriteFont>("Score");
             SetupSprites();
         }
 
@@ -230,7 +233,9 @@ namespace App05
             //background
             Vector2 position = new Vector2(0, 0);
             _spriteBatch.Draw(background, position, Color.White);
-             //bulets
+            //text
+            _spriteBatch.DrawString(font, "Score: " + points, new Vector2(0, 0), Color.White);
+            //bulets
             _spriteBatch.Draw(playerBullet.Image, playerBullet.GetCentrePosition(), Color.White);
             //player
             _spriteBatch.Draw(playerCharacter.Image, playerCharacter.GetCentrePosition(), Color.White);
