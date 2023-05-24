@@ -113,7 +113,7 @@ namespace App05
                 MoveLeft = false;
                 MoveRight = false;
             }
-            
+
         }
 
     }
