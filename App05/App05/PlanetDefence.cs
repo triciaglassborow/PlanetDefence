@@ -534,6 +534,7 @@ namespace App05
             _spriteBatch.Begin();
             if (!RunWave1)
             {
+                _spriteBatch.Draw(background, position, Color.Gray);
                 _spriteBatch.DrawString(font, into, new Vector2(0, 0), Color.White);
             }
             if(RunWave1)
