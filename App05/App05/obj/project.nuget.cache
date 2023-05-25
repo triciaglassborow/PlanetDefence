@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PdTQpRfVlzgQNUsmgivxjuDTKhqe2FEQXELugCVaLZ4AkNte37tOIhzOD8cw9XDVqiMPWn60Vm8mzq8E9lBlww==",
+  "dgSpecHash": "hIppQHtVvPPE3182Z3/6TXVg+ouwT/mPWA9Y1IWT92uODbweGrnflbMppuPqGTnxjDsx7+HUgx5VwA2ZBGpiWg==",
   "success": true,
   "projectFilePath": "C:\\Users\\44791\\Documents\\Semester 2\\Application programming\\game\\App05\\App05\\App05.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\44791\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
-    "C:\\Users\\44791\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
