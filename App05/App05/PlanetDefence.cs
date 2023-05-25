@@ -65,10 +65,10 @@ namespace App05
             "You Died\n" +
             "\n" +
             "Score: ";
-        public string winScreen = "Well done!\n" +
+        public string winScreen = "                 Well done!\n" +
             "You saved earth from the aliens!\n" +
             "\n" +
-            "Score: ";
+            "                 Score: ";
 
 
         public PlanetDefence()
@@ -566,12 +566,12 @@ namespace App05
             if(GameOver)
             {
                 _spriteBatch.Draw(background, position, Color.Red);
-                _spriteBatch.DrawString(font, loseScreen + points, new Vector2(0, 0), Color.White);
+                _spriteBatch.DrawString(font, loseScreen + points, new Vector2(200, 300), Color.White);
             }
             if (Win)
             {         
                 _spriteBatch.Draw(background, position, Color.Green);
-                _spriteBatch.DrawString(font, winScreen + points, new Vector2(0, 0), Color.White);
+                _spriteBatch.DrawString(font, winScreen + points, new Vector2(0, 300), Color.White);
             }
             
             _spriteBatch.End();
